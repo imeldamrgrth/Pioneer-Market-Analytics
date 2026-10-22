@@ -54,7 +54,11 @@ orders_full['revenue'] = orders_full['price']
 
 # SIDEBAR
 logo_path = os.path.join(ASSETS_DIR, "logo.png")
-st.sidebar.image(logo_path, width=220)
+
+if os.path.isfile(logo_path):
+    st.sidebar.image(logo_path, width=220)
+else:
+    st.sidebar.error("File logo tidak ditemukan.")
 min_date_allowed = pd.to_datetime("2016-01-01").date()
 max_date_allowed = pd.to_datetime("2018-12-31").date()
 
